@@ -1,0 +1,45 @@
+# Shopify monitor
+
+## Information
+This is a very simple and powerful backend script
+
+Set the correct data in the config.json file, start the script and that's all
+
+### Installation
+
+Open your cmd and run
+
+```node
+git clone git@github.com:Dam998/shopify-monitor.git
+```
+
+If you didn't install git before, do it, now! --> [git](https://git-scm.com/downloads)
+
+Edit the config.json, add shopify sites and set your discord webhook url
+
+If you don't have installed npm or node js go to this page: [node js](https://nodejs.org/it/download/) download and install node js
+
+
+Then go inside the project folder and run:
+
+```node
+npm install
+```
+
+After run this:
+
+```node
+npm start
+```
+
+That's all, the shopify monitor has been started, if it finds a product it will notify you on discord
+
+## TODO List
+
+* Keywords to filter products
+* Proxies
+* Notify and manage if a site ban the script
+* and more
+
+
+#### Send me a message if you have ideas or problem, I am here
