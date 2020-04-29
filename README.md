@@ -15,7 +15,7 @@ git clone git@github.com:Dam998/shopify-monitor.git
 
 If you didn't install git before, do it, now! --> [git](https://git-scm.com/downloads)
 
-Edit the config.json, add shopify sites and set your discord webhook url
+Open the config.json file: add shopify sites and set your discord webhook url (if you want you can also edit the request timing, I recommend to don't do it, it's not necessary, if you decrease that time you can be banned from the site)
 
 If you don't have installed npm or node js go to this page: [node js](https://nodejs.org/it/download/) download and install node js
 
@@ -38,7 +38,7 @@ That's all, the shopify monitor has been started, if it finds a product it will 
 
 * Keywords to filter products
 * Proxies
-* Notify and manage if a site ban the script
+* Notify and manage if a site bans you
 * and more
 
 
