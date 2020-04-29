@@ -36,9 +36,11 @@ That's all, the shopify monitor has been started, if it finds a product it will 
 
 ## TODO List
 
+* Improve control to check if a product or its information is really changed, to not leave anything or receive too many notification
+* Notify and manage if a site bans you
+* Possibility to filter products by type (like footwear etc)
 * Keywords to filter products
 * Proxies
-* Notify and manage if a site bans you
 * and more
 
 
