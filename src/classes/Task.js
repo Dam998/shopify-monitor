@@ -37,8 +37,7 @@ class Task {
                     });
 
                     this.firstRun = false;
-
-                    Discord.message(`Connessione effettuata con: ${this.url}`);
+                    
                     console.log(`Connection done with ${this.url}`)
                 }
                 else {
