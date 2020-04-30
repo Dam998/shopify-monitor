@@ -75,7 +75,8 @@ class Task {
                                     }
                                 }
                                 else {
-                                    var newPr = new Product(x.id, this.sellerUrl).updateInformation(x)
+                                    var newPr = new Product(product.id, this.sellerUrl)
+                                    newPr.updateInformation(product)
                                     newProducts = [...newProducts, newPr]
                                     Discord.notifyProduct(newPr)
                                 }                                
