@@ -50,7 +50,7 @@ That's all, the shopify monitor has been started, if it finds a product it will 
 | **Done** | **News** | **Version** |
 | -------- | -------- | ----------- |
 | ✅ | First basic version of the monitor with notification on discord | **version 1** |
-| | Implement an algorithm  to improve the search for new or modified products and avoid spam | **version 1.1** |
+| ✅ | Implement an algorithm  to improve the search for new or modified products and avoid spam | **version 1.1** |
 | | Notify and manage if a site bans you | **version 1.2** |
 | | Keywords to filter products | **version 1.3** |
 | | Possibility to filter products by type (like footwear etc) | **version 1.4** |
