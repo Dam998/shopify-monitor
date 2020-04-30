@@ -47,12 +47,15 @@ That's all, the shopify monitor has been started, if it finds a product it will 
 
 ## TODO List
 
-* Improve control to check if a product or its information is really changed, to not leave anything or receive too many notification
-* Notify and manage if a site bans you
-* Possibility to filter products by type (like footwear etc)
-* Keywords to filter products
-* Proxies
-* and more
+| **Done** | **News** | **Version** |
+| -------- | -------- | ----------- |
+| ✅ | First basic version of the monitor with notification on discord | **version 1** |
+| | Implement an algorithm  to improve the search for new or modified products and avoid spam | **version 1.1** |
+| | Notify and manage if a site bans you | **version 1.2** |
+| | Keywords to filter products | **version 1.3** |
+| | Possibility to filter products by type (like footwear etc) | **version 1.4** |
+| | Possibility to use proxies | **version 2** |
+| | more ... | **version ...** |
 
 
 #### Send me a message if you have ideas or problem, I am here
