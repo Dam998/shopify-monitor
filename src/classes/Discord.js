@@ -14,8 +14,8 @@ Discord.product = async (title, url, author, imageUrl, variants) => {
     hook.send(embed);
 }
 
-Discord.message = async (title) => {
-    hook.send(title);
+Discord.info = async (title) => {
+    hook.info(title);
 }
 
 module.exports = Discord;

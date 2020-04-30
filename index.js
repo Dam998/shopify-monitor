@@ -6,21 +6,30 @@ const mongoose = require('mongoose');
 const Task = require('./src/classes/Task.js');
 const Seller = require('./src/models/Seller');
 
+const Discord = require('./src/classes/Discord')
+
 mongoose.connect(global.config.mongodb_uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-Seller.deleteMany({}, (err) => {
-    if (!err) {
-
-        Seller.insertMany(global.config.sites, (err) => {
-
-            if(!err){
-                Seller.find({}, (err, tasksQuery) => {
-                    for (let i = 0; i < tasksQuery.length; i++) {
-                        new Task(tasksQuery[i]).start();
-                    }
-                });
-            }
-
-        })
-    }
-});
+try {
+    Seller.deleteMany({}, (err) => {
+        if (!err) {
+    
+            Seller.insertMany(global.config.sites, (err) => {
+    
+                if(!err){
+                    Seller.find({}, (err, tasksQuery) => {
+                        for (let i = 0; i < tasksQuery.length; i++) {
+                            new Task(tasksQuery[i]).start();
+                        }
+    
+                        Discord.info('Monitor successfully started, relax and stay tuned\n\nFor help open an issue on github: https://github.com/Dam998/shopify-monitor');
+                    });
+                }
+    
+            })
+        }
+    });
+}
+catch(err) {
+    console.log(err)
+}
