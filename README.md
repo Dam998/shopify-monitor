@@ -47,6 +47,8 @@ npm start
 
 That's all, the shopify monitor has been started, if it finds a product it will notify you on discord
 
+When the monitor starts it sends a discord message, if you don't receive a discord message from the monitor it means there is a problem with the webhook url
+
 ## TODO List
 
 | **Done** | **News** | **Version** |
