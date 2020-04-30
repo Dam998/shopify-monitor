@@ -18,6 +18,7 @@ If you don't have installed npm or node js go to this page: [node js](https://no
 #### Mongo DB
 
 You can install mongo db following this guide: [mongo db](https://docs.mongodb.com/manual/administration/install-community/)
+If you need some help to install it you can see this video https://www.youtube.com/watch?v=FwMwO8pXfq0&t=552s
 
 ### Prepare the environment
 
