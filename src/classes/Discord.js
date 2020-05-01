@@ -11,7 +11,17 @@ Discord.notifyProduct = async ({title, sellerUrl, image, url, variants}) => {
         return;
 
     const embed = new MessageBuilder().setTitle(title).setAuthor(sellerUrl, image, url).setURL(url)
-    .addField('Sizes', availablesVariants.map(x => x.title).join('\n'), true).addField('Price', variants[0].price, true).setThumbnail(image); 
+    .addField('Sizes', availablesVariants.map(x => {
+        var title = x.title;
+        if(title.indexOf(',') > -1){
+            title = title.split(',')[0]
+        }
+        else if(title.indexOf(':') > -1){
+            title = title.split(':')[0]
+        }
+        return `${title} [[ATC](https://${sellerUrl}/cart/add.js?id=${x.id})]`
+    }).join('\n'), true).addField('Price', variants[0].price, true)
+    .addField('Links', `[[Cart](https://${sellerUrl}/cart)]`).setThumbnail(image); 
 
     hook.send(embed);
 }

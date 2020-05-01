@@ -33,7 +33,7 @@ class Task {
                         newProducts = [...newProducts, product];
                     });
 
-                    await Seller.updateOne({ "_id": this.sellerId }, {
+                    await Seller.updateOne({ _id: this.sellerId }, {
                         products: newProducts
                     });
 
@@ -74,12 +74,12 @@ class Task {
                                         await Seller.updateOne({ _id: this.sellerId, "products.id": product.id }, { $set: { "products.$.lastUpdate": product.updated_at } });
                                     }
                                 }
-                                else {
+                                else {                                    
                                     var newPr = new Product(product.id, this.sellerUrl)
                                     newPr.updateInformation(product)
                                     newProducts = [...newProducts, newPr]
                                     Discord.notifyProduct(newPr)
-                                }                                
+                                }
                             });
 
                             if (newProducts.length > 0) {

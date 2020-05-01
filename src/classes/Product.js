@@ -22,7 +22,7 @@ class Product {
         shopifyInfo.variants.forEach(x => {
             this.variants = [...this.variants, {
                 id: x.id,
-                title: x.title,
+                title: x.option1,
                 price: x.price,
                 available: x.available
             }]
@@ -46,7 +46,7 @@ class Product {
             var newV = product.variants[i]
 
             if(oldV.id != newV.id
-                || oldV.title != newV.title
+                || oldV.title != newV.option1
                 || oldV.price != newV.price
                 || oldV.available != newV.available){
                     needToNotifyUpdate = true;

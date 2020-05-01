@@ -2,9 +2,6 @@ const mongoose = require('mongoose');
 
 const sellerSchema = new mongoose.Schema({
 	url: String,
-	lastIdItemAdded: Number,
-	dateAdded: Date,
-    storeHash: String,
     products: [{}],
 });
 
