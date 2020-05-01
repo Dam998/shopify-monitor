@@ -5,33 +5,38 @@ hook.setUsername('Shopify monitor')
 
 let Discord = {};
 
-Discord.notifyProduct = async ({title, sellerUrl, image, url, variants}) => {
-    var availablesVariants = variants.filter(x => x.available);
-    if(availablesVariants.length == 0)
-        return;
-
-    var sizesDescription = []
-    sizesDescription.push("")
-    var count = 0
-
-    availablesVariants.forEach(x => {
-        var toAdd = `${x.title} [[ATC](https://${sellerUrl}/cart/add.js?id=${x.id})]\n`
-        if(sizesDescription[count].length + toAdd.length > 1024){
-            sizesDescription.push(toAdd);
-            count++;
-        }
-        else{
-            sizesDescription[count] += toAdd;
-        }
-    })
-
+Discord.notifyProduct = async ({title, sellerUrl, image, url, variants, status}) => {
     const embed = new MessageBuilder().setTitle(title).setAuthor(sellerUrl, image, url).setURL(url);
 
-    sizesDescription.forEach(x => {
-        embed.addField('Sizes', x, true)
-    })
+    var availablesVariants = variants.filter(x => x.available);
+    if(availablesVariants.length > 0){
+        var sizesDescription = []
+        sizesDescription.push("")
+        var count = 0
+    
+        availablesVariants.forEach(x => {
+            var toAdd = `${x.title} [[ATC](https://${sellerUrl}/cart/add.js?id=${x.id})]\n`
+            if(sizesDescription[count].length + toAdd.length > 1024){
+                sizesDescription.push(toAdd);
+                count++;
+            }
+            else{
+                sizesDescription[count] += toAdd;
+            }
+        })
 
-    embed.addField('Price', variants[0].price, true).addField('Links', `[[Cart](https://${sellerUrl}/cart)]`, true).setThumbnail(image); 
+        sizesDescription.forEach(x => {
+            embed.addField('**Sizes**', x, true)
+        })
+    }
+
+    embed.addField('**Price**', variants[0].price, true)
+
+    if(status.length > 0){
+        embed.addField('**Status**', status.join('\n'), true)
+    }    
+
+    embed.addField('**Links**', `[[Cart](https://${sellerUrl}/cart)]`, true).setThumbnail(image); 
 
     hook.send(embed);
 }

@@ -8,6 +8,7 @@ class Product {
         this.url = url;
         this.image = image;
         this.variants = variants;
+        this.status = [];
     }
 
     updateInformation = (shopifyInfo) => {
@@ -17,6 +18,8 @@ class Product {
 
         this.title = shopifyInfo.title;
         this.url = `https://${this.sellerUrl}/products/${this.handle}`;
+
+        this.status = shopifyInfo.tags.filter(x => x.startsWith("status:")).map(x => x.split(':')[1])
 
         this.variants = [];
         shopifyInfo.variants.forEach(x => {
