@@ -39,7 +39,7 @@ If you need some help to install it you can see this video https://www.youtube.c
 Open your cmd and run
 
 ```node
-git clone git@github.com:Dam998/shopify-monitor.git
+git clone https://github.com/Dam998/shopify-monitor.git
 ```
 
 Open the config.json file: add shopify sites and set your discord webhook url (if you want you can also edit the request timing, I recommend to don't do it, it's not necessary, if you decrease that time you can be banned from the site)
