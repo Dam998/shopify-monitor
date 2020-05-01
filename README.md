@@ -49,15 +49,32 @@ That's all, the shopify monitor has been started, if it finds a product it will 
 
 When the monitor starts it sends a discord message, if you don't receive a discord message from the monitor it means there is a problem with the webhook url
 
+
+## Notification example
+
+This is an example of discord notification that monitor will send to you
+
+![image](https://github.com/Dam998/shopify-monitor/blob/master/discord%20example.png)
+
+#### Usefull links
+
+ATC and Cart are very usefull links
+
+If you click the ATC link the site'll add automatically the corresponding product in your cart, then you can click the Cart link to jump istantly to the cart with the product already inside
+
+These links are very useful for speeding up the purchase of products
+
+
 ## TODO List
 
 | **Done** | **News** | **Version** |
 | -------- | -------- | ----------- |
 | ✅ | First basic version of the monitor with notification on discord | **version 1** |
 | ✅ | Implement an algorithm  to improve the search for new or modified products and avoid spam | **version 1.1** |
-| 🚧 | Notify and manage if a site bans you | **version 1.2** |
-| | Keywords to filter products | **version 1.3** |
-| | Possibility to filter products by type (like footwear etc) | **version 1.4** |
+| ✅ | Add usefull links to the discord's notifications (like atc and cart links) | **version 1.2** |
+| | Notify and manage if a site bans you | **version 1.3** |
+| | Keywords to filter products | **version 1.4** |
+| | Possibility to filter products by type (like footwear etc) | **version 1.5** |
 | | Possibility to use proxies | **version 2** |
 | | more ... | **version ...** |
 
