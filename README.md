@@ -1,7 +1,20 @@
 # Shopify monitor
 
 ## Information
-This is a very simple and powerful shopify monitor script
+This is a very simple and powerful shopify monitor script\
+Because is always uptodate, extremely lightweight and efficient, this shopify monitor is better than a lot of paid monitor, COVID-19 brings also good things
+
+### Notification example
+
+This is an example of discord notification that monitor will send to you
+
+![image](https://github.com/Dam998/shopify-monitor/blob/master/discord%20example.png)
+
+**ATC** and **Cart** are very usefull links\
+If you click the ATC link the site'll add automatically the corresponding product in your cart, then you can click the Cart link to jump istantly to the cart with the product already inside
+
+These links are very useful for speeding up the purchase of products
+
 
 Follow the few steps below to set the environment and start the monitor
 
@@ -48,21 +61,6 @@ npm start
 That's all, the shopify monitor has been started, if it finds a product it will notify you on discord
 
 When the monitor starts it sends a discord message, if you don't receive a discord message from the monitor it means there is a problem with the webhook url
-
-
-## Notification example
-
-This is an example of discord notification that monitor will send to you
-
-![image](https://github.com/Dam998/shopify-monitor/blob/master/discord%20example.png)
-
-#### Usefull links
-
-ATC and Cart are very usefull links
-
-If you click the ATC link the site'll add automatically the corresponding product in your cart, then you can click the Cart link to jump istantly to the cart with the product already inside
-
-These links are very useful for speeding up the purchase of products
 
 
 ## TODO List
