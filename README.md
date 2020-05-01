@@ -34,6 +34,8 @@ You can install mongo db following this guide: [mongo db](https://docs.mongodb.c
 
 If you need some help to install it you can see this video https://www.youtube.com/watch?v=FwMwO8pXfq0&t=552s
 
+#### NOTE: I've git version 2.26.2, node js version 12.16.3, mongodb version 4.2.6. If you have any problems with the monitor, try to update your setup with my versions
+
 ### Prepare the environment
 
 Open your cmd and run
