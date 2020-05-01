@@ -1,7 +1,7 @@
 {
     "mongodb_uri": "mongodb://127.0.0.1:27017/shopify",
     "webhook_url": "DISCORD_WEBHOOK_URL",
-    "requestTiming": 20000,
+    "requestTiming": 30000,
     "sites": [
         { "url": "hanon-shop.com" },
         { "url": "sesinko.com" }
