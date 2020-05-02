@@ -1,7 +1,7 @@
-let Log = { }
+let Log = {}
 
 Log.Info = (message) => {
-    console.log('\x1b[37m', `[INFO   ] ${message}`)
+    console.log('\x1b[37m', `[INFO   ]`, '\x1b[0m', message)
 }
 
 Log.Warning = (message) => {
