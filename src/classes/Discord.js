@@ -23,7 +23,7 @@ Discord.notifyProduct = async ({title, sellerUrl, image, url, variants, status})
         var count = 0
     
         availablesVariants.forEach(x => {
-            var toAdd = `${x.title} [[ATC](https://${sellerUrl}/cart/add.js?id=${x.id})]\n`
+            var toAdd = `${x.title} [[ATC](https://${sellerUrl}/cart/add?id=${x.id})]\n`
             if(sizesDescription[count].length + toAdd.length > 1024){
                 sizesDescription.push(toAdd);
                 count++;
