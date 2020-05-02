@@ -11,6 +11,7 @@ class Task {
         this.sellerUrl = taskSettings.url;
         this.firstRun = true;
         this.sellerId = taskSettings._id;
+        this.banCount = 0;
     }
 
     start = async () => {
@@ -20,6 +21,8 @@ class Task {
                 const response = await axios.get(`https://${this.sellerUrl}/products.json`, {
                     responseType: 'json',
                 })
+
+                this.banCount = 0;
 
                 var products = response.data.products;
 
@@ -90,7 +93,17 @@ class Task {
                 }
             }
             catch (err) {
-                console.log(err)
+                if(err.response && (err.response.status === 430 || err.response.status === 429)){
+                    this.banCount++
+                    console.log(`Ban occurred [${this.sellerUrl}]\nRetry after ${30 * this.banCount} seconds` )
+                    clearInterval(this.task);
+                    setTimeout(() => {
+                        this.start()
+                    }, 60000 * this.banCount)                    
+                }
+                else {
+                    console.log(err)
+                }
             }
 
         }, global.config.requestTiming)
