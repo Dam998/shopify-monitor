@@ -19,7 +19,9 @@ try {
                 if(!err){
                     Seller.find({}, (err, tasksQuery) => {
                         for (let i = 0; i < tasksQuery.length; i++) {
-                            new Task(tasksQuery[i]).start();
+                            setTimeout(() => {
+                                new Task(tasksQuery[i]).start();
+                            }, 4000 * i)                            
                         }
     
                         Discord.info('Monitor successfully started, relax and stay tuned\n\nFor help open an issue on github: https://github.com/Dam998/shopify-monitor');

@@ -6,12 +6,14 @@ const Seller = require('../models/Seller')
 
 const Product = require('./Product')
 
+const Log = require('./Log')
+
 class Task {
     constructor(taskSettings) {
         this.sellerUrl = taskSettings.url;
         this.firstRun = true;
         this.sellerId = taskSettings._id;
-        this.banCount = 0;
+        this.banCount = 0.5;
     }
 
     start = async () => {
@@ -42,15 +44,15 @@ class Task {
 
                     this.firstRun = false;
 
-                    console.log(`Connection done with ${this.sellerUrl}`)
+                    Log.Info(`Connection done with ${this.sellerUrl}`);
                 }
                 else {
                     Seller.findById(this.sellerId, async (err, sellerQuery) => {
                         if (err) {
-                            console.log('Seller not found')
+                            Log.Warning('Seller not found');
                         }
                         else if (products.length === 0) {
-                            console.log(`No products found in ${this.sellerUrl}`)
+                            Log.Warning(`No products found in ${this.sellerUrl}`);
                         }
                         else {
 
@@ -94,15 +96,19 @@ class Task {
             }
             catch (err) {
                 if(err.response && (err.response.status === 430 || err.response.status === 429)){
-                    this.banCount++
-                    console.log(`Ban occurred [${this.sellerUrl}]\nRetry after ${30 * this.banCount} seconds` )
+                    this.banCount += 0.5;
+                    Log.Warning(`Ban occurred [${this.sellerUrl}] - Retry after ${60 * this.banCount} seconds`)
                     clearInterval(this.task);
                     setTimeout(() => {
                         this.start()
                     }, 60000 * this.banCount)                    
                 }
                 else if(err.response && err.response.status === 403){
-                    console.log(`${this.sellerUrl} has an high level of protection from monitors, please notify Dam998 by opening an issue on github [https://github.com/Dam998/shopify-monitor]`)
+                    Log.Error(`${this.sellerUrl} has an high level of protection from monitors, please notify Dam998 by opening an issue on github [https://github.com/Dam998/shopify-monitor]`);
+                    clearInterval(this.task)
+                }
+                else if(err.code === 'ETIMEDOUT'){
+                    Log.Error(`Timeout occurred, a node js script cannot manage a lot of requests in the same time (I raccomand max 10 sites for script's istance, to stay more safe), please start more that 1 monitor with splitted sites or contact Dam998 for help [https://github.com/Dam998/shopify-monitor]`);
                     clearInterval(this.task)
                 }
                 else {

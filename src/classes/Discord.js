@@ -1,6 +1,14 @@
 const { Webhook, MessageBuilder } = require('discord-webhook-node');
 
+const Log = require('./Log')
+
+if(global.config.webhook_url === ''){
+    Log.Error('Discord webhook url cannot be empty, insert it in the config.json file')
+    process.exit()
+}
+
 const hook = new Webhook(global.config.webhook_url);
+
 hook.setUsername('Shopify monitor')
 
 let Discord = {};
