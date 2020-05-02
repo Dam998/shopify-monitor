@@ -101,6 +101,10 @@ class Task {
                         this.start()
                     }, 60000 * this.banCount)                    
                 }
+                else if(err.response && err.response.status === 403){
+                    console.log(`${this.sellerUrl} has an high level of protection from monitors, please notify Dam998 by opening an issue on github [https://github.com/Dam998/shopify-monitor]`)
+                    clearInterval(this.task)
+                }
                 else {
                     console.log(err)
                 }
