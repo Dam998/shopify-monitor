@@ -9,7 +9,14 @@ if(global.config.webhook_url === ''){
 
 const hook = new Webhook(global.config.webhook_url);
 
-hook.setUsername('Shopify monitor')
+const botSettings = global.config.discord_message_settings;
+if(botSettings.botName && botSettings.botName != ""){
+    hook.setUsername(botSettings.botName)
+}
+
+if(botSettings.botImage && botSettings.botImage != ""){
+    hook.setAvatar(botSettings.botImage)
+}
 
 let Discord = {};
 
@@ -45,6 +52,14 @@ Discord.notifyProduct = async ({title, sellerUrl, image, url, variants, status})
     }    
 
     embed.addField('**Links**', `[[Cart](https://${sellerUrl}/cart)]`, true).setThumbnail(image); 
+
+    if(botSettings.footerDescription && botSettings.footerDescription != "" || botSettings.footerImage && botSettings.footerImage != ""){
+        embed.setFooter(botSettings.footerDescription, botSettings.footerImage)        
+    }    
+
+    if(botSettings.timeOfNotification){
+        embed.setTimestamp()
+    }
 
     hook.send(embed);
 }

@@ -1,6 +1,13 @@
 {
     "mongodb_uri": "mongodb://127.0.0.1:27017/shopify",
     "webhook_url": "DISCORD_WEBHOOK_URL",
+    "discord_message_settings": {
+        "botImage": "https://cdn.discordapp.com/embed/avatars/0.png",
+        "botName": "Shopify monitor",
+        "footerDescription": "",
+        "footerImage": "",
+        "timeOfNotification": true
+    },
     "requestTiming": 30000,
     "__KEYWORDS_EXPLAINED" : "In this default example that I've created the monitor will notify you if find a Nike product in hanon or sensinko site, and it'll notify if find a New Balance or Adidas Yeezy product only in hanon site",
     "keywords": [["Nike"]],
