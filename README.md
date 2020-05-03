@@ -44,7 +44,7 @@ Open your cmd and run
 git clone https://github.com/Dam998/shopify-monitor.git
 ```
 
-Open the config.json file: add shopify sites and set your discord webhook url (if you want you can also edit the request timing, I recommend to don't do it, it's not necessary, if you decrease that time you can be banned from the site)
+Before edit the config.json please read the **Configuration settings** below because, if you mistake to edit it, the monitor could not start or not work propertly
 
 Then go inside the project folder and run:
 
@@ -64,6 +64,25 @@ That's all, the shopify monitor has been started, if it finds a product it will 
 
 When the monitor starts it sends a discord message, if you don't receive a discord message from the monitor it means there is a problem with the webhook url
 
+## Configuration settings
+Open the config.json file and be careful to follow the rules below for proper operation
+
+  - **mongodb_uri**: don't modify this url, it's not necessary, leave it like you found it.
+  - **webhook_url**: here you have to add your discord webhook url, monitor'll notify you at this url.
+  - **requestTiming**: this field means after how many milliseconds the monitor sniff the sites to find new products, I reccomand to leave this at least at 30000 because if you don't use proxies easy that site could ban you (I'll implement proxies in v.2) however I have implemented an algoritm to unban the monitor if ban occurred but you lose some time.
+  - **keywords**: this field are an array of array, here you can specify keywords to filter products to notify, this field work over all sites specified in the config.json file.\
+  **How to use it?** This is an example of array in array\
+  **[["Adidas"],["New Balance"],["Nike","Jordan"]]**\
+  If I write this I mean that I'll monitor all adidas products, all new balance products and all nike jordan products in the sites, because nike and jordan are in AND and not in OR. So, for example, if I want notify only if the monitor find Adidas Yeezy 350 or Adidas Yeezy 380 I'll write:\
+  **[["Adidas","Yeezy","350"],["Adidas","Yeezy","380"]]**\
+  Maybe this is not easy to understand to all, if you have any dubts, please, open an issue, I'll explain it better with more examples.\
+  **NB: If you don't want use keywords don't specify the field keywords**\
+  **TIPS:** 
+    - If you want search nike jordan please not write like this [["Nike Jordan"]] but write this [["Nike"],["Jordan"]] because you have a lot of more possibility to not mistake and skip an important notification
+    - The keywords are not keysensitive so there is no difference beetween Nike or nike
+     
+  
+  - **sites**: this field are an array of objects, in each object you can specify 2 fields: the url of the site and the keywords to filter product for the specified site before. The rules for the keywords are the same explained before.
 
 ## TODO List
 
@@ -75,6 +94,7 @@ When the monitor starts it sends a discord message, if you don't receive a disco
 | ✅ | Manage if a site bans you | **version 1.3** |
 | ✅ | Create a very useful log management for the notification of important informations | **version 1.3.1** |
 | | Keywords to filter products | **version 1.4** |
+| | Possibility to customize discord messages | **version 1.4.1** |
 | | Possibility to use proxies | **version 2** |
 | | more ... | **version ...** |
 
