@@ -75,9 +75,11 @@ When the monitor starts it sends a discord message, if you don't receive a disco
 | ✅ | Manage if a site bans you | **version 1.3** |
 | ✅ | Create a very useful log management for the notification of important informations | **version 1.3.1** |
 | | Keywords to filter products | **version 1.4** |
-| | Possibility to filter products by type (like footwear etc) | **version 1.5** |
 | | Possibility to use proxies | **version 2** |
 | | more ... | **version ...** |
 
 
 #### Send me a message if you have ideas or problem, I am here
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/Dam998/shopify-monitor/blob/master/LICENSE) file for details
