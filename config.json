@@ -2,8 +2,34 @@
     "mongodb_uri": "mongodb://127.0.0.1:27017/shopify",
     "webhook_url": "DISCORD_WEBHOOK_URL",
     "requestTiming": 30000,
+    "keywords": [
+        [
+            "New Balance"
+        ]
+    ],
     "sites": [
-        { "url": "hanon-shop.com" },
-        { "url": "sesinko.com" }
+        {
+            "url": "hanon-shop.com",
+            "keywords": [
+                [
+                    "Nike",
+                    "Jordan"
+                ],
+                [
+                    "Adidas",
+                    "Yeezy",
+                    "350"
+                ],
+                [
+                    "Adidas",
+                    "Yeezy",
+                    "380"
+                ]
+            ]
+        },
+        {
+            "url": "sesinko.com",
+            "keywords": []
+        }
     ]
 }

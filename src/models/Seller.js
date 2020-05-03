@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const sellerSchema = new mongoose.Schema({
-	url: String,
+    url: String,
+    keywords: [],
     products: [{}],
 });
 
