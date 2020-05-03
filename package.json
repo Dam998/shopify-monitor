@@ -1,6 +1,6 @@
 {
   "name": "shopify-monitor",
-  "version": "1.4",
+  "version": "1.4.0",
   "description": "Shopify monitor",
   "main": "index.js",
   "scripts": {
