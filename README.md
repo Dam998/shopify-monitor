@@ -69,6 +69,12 @@ Open the config.json file and be careful to follow the rules below for proper op
 
   - **mongodb_uri**: don't modify this url, it's not necessary, leave it like you found it.
   - **webhook_url**: here you have to add your discord webhook url, monitor'll notify you at this url.
+  - **discord_message_settings**: this field rappresent an object that permit you to customize discord message:
+      - **botImage:** this rappresent the image of the bot, insert here an absolute URL to change it
+      - **botName:** this rappresent the name of the bot
+      - **footerDescription:** here you can insert a footer description
+      - **footerImage:** here you can insert an absolute URL to add an image to the footer. NB: footer image will not display if description is empty
+      - **timeOfNotification:** this is a boolean value (true or false), if true you'll see the time of notification in the message's footer
   - **requestTiming**: this field means after how many milliseconds the monitor sniff the sites to find new products, I reccomand to leave this at least at 30000 because if you don't use proxies easy that site could ban you (I'll implement proxies in v.2) however I have implemented an algoritm to unban the monitor if ban occurred but you lose some time.
   - **keywords**: this field are an array of array, here you can specify keywords to filter products to notify, this field work over all sites specified in the config.json file.\
   **How to use it?** This is an example of array in array\
@@ -82,7 +88,9 @@ Open the config.json file and be careful to follow the rules below for proper op
     - The keywords are not keysensitive so there is no difference beetween Nike or nike
      
   
-  - **sites**: this field are an array of objects, in each object you can specify 2 fields: the url of the site and the keywords to filter product for the specified site before. The rules for the keywords are the same explained before.
+  - **sites**: this field are an array of objects, in each object you can specify 2 fields: 
+      - **url:** this rappresent the site's url
+      - **keywords:** here you can insert an array of array to filter products for the specified site before. The rules for the keywords are the same explained.
 
 ## TODO List
 
@@ -94,7 +102,7 @@ Open the config.json file and be careful to follow the rules below for proper op
 | ✅ | Manage if a site bans you | **version 1.3** |
 | ✅ | Create a very useful log management for the notification of important informations | **version 1.3.1** |
 | ✅ | Keywords to filter products | **version 1.4** |
-| | Possibility to customize discord messages | **version 1.4.1** |
+| ✅ | Possibility to customize discord messages | **version 1.4.1** |
 | | Possibility to use proxies | **version 2** |
 | | more ... | **version ...** |
 
