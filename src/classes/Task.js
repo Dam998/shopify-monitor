@@ -14,7 +14,11 @@ class Task {
         this.firstRun = true;
         this.sellerId = taskSettings._id;
         this.banCount = 0.5;
-        this.keywords = taskSettings.keywords.concat(global.config.keywords);
+
+        this.keywords = taskSettings.keywords
+        if(global.config.keywords){
+            this.keywords = this.keywords.concat(global.config.keywords)
+        }
     }
 
     start = async () => {
@@ -130,11 +134,15 @@ class Task {
 
     productsToCheck = (products) => {
         return products.filter(product => {
+            var title = product.title.toLowerCase();
+            var vendor = product.vendor.toLowerCase();
             for (var keys of this.keywords) {
                 var check = true;
                 for (var key of keys) {
-                    if (product.title.toLowerCase().indexOf(key.toLowerCase()) === -1
-                        && !product.tags.some(tag => tag.toLowerCase().indexOf(key.toLowerCase()) > -1)) {
+                    var keyToLower = key.toLowerCase();
+                    if (title.indexOf(keyToLower) === -1
+                        && vendor.indexOf(keyToLower) === -1
+                        && !product.tags.some(tag => tag.toLowerCase().indexOf(keyToLower) > -1)) {
                         check = false;
                         break;
                     }

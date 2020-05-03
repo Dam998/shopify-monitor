@@ -2,34 +2,13 @@
     "mongodb_uri": "mongodb://127.0.0.1:27017/shopify",
     "webhook_url": "DISCORD_WEBHOOK_URL",
     "requestTiming": 30000,
-    "keywords": [
-        [
-            "New Balance"
-        ]
-    ],
+    "__KEYWORDS_EXPLAINED" : "In this default example that I've created the monitor will notify you if find a Nike product in hanon or sensinko site, and it'll notify if find a New Balance or Adidas Yeezy product only in hanon site",
+    "keywords": [["Nike"]],
     "sites": [
         {
             "url": "hanon-shop.com",
-            "keywords": [
-                [
-                    "Nike",
-                    "Jordan"
-                ],
-                [
-                    "Adidas",
-                    "Yeezy",
-                    "350"
-                ],
-                [
-                    "Adidas",
-                    "Yeezy",
-                    "380"
-                ]
-            ]
+            "keywords": [["New Balance"],["Adidas","Yeezy" ]]
         },
-        {
-            "url": "sesinko.com",
-            "keywords": []
-        }
+        { "url": "sesinko.com" }
     ]
 }
