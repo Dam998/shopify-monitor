@@ -1,5 +1,8 @@
 # Shopify monitor
 
+<a href="https://www.buymeacoffee.com/Dam998" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> If you like my project and if you want to support me to do other projects like this, please buy me a coffee. Or if you want more, you can **become a member** of my coffee group! Members have benefits, go to my [BuyMeACoffe](https://www.buymeacoffee.com/Dam998) page and read the benefits.\
+I'm waiting for you 😉
+
 ## Information
 This is a very simple and powerful shopify monitor script\
 Because is always uptodate, extremely lightweight and efficient, this shopify monitor is better than a lot of paid monitor, COVID-19 brings also good things
