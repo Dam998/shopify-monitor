@@ -105,7 +105,7 @@ Open the config.json file and be careful to follow the rules below for proper op
 | ✅ | Create a very useful log management for the notification of important informations | **version 1.3.1** |
 | ✅ | Keywords to filter products | **version 1.4** |
 | ✅ | Possibility to customize discord messages | **version 1.4.1** |
-| | Possibility to use proxies | **version 2** |
+| 🚧 | Possibility to use proxies | **version 2** |
 | | more ... | **version ...** |
 
 
