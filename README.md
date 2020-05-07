@@ -70,7 +70,7 @@ When the monitor starts it sends a discord message, if you don't receive a disco
 Open the config.json file and be careful to follow the rules below for proper operation
 
   - **mongodb_uri**: don't modify this url, it's not necessary, leave it like you found it.
-  - **webhook_url**: here you have to add your discord webhook url, monitor'll notify you at this url.
+  - **webhook_url**: this field is an array of string, here you have to add your discord webhook url, monitor'll notify you at this url. because is a array you can add more than 1 webhhok url
   - **discord_message_settings**: this field rappresent an object that permit you to customize discord message:
       - **botImage:** this rappresent the image of the bot, insert here an absolute URL to change it
       - **botName:** this rappresent the name of the bot
@@ -90,9 +90,12 @@ Open the config.json file and be careful to follow the rules below for proper op
     - The keywords are not keysensitive so there is no difference beetween Nike or nike
      
   
-  - **sites**: this field are an array of objects, in each object you can specify 2 fields: 
+  - **sites**: this field is an array of objects, in each object you can specify 2 fields: 
       - **url:** this rappresent the site's url
       - **keywords:** here you can insert an array of array to filter products for the specified site before. The rules for the keywords are the same explained.
+
+  - **proxiesList:** this field is an array of proxies, **only ipv4 are supported**. Please don't use free proxies found online because they are (always) shit, don't spent time to search them, a good proxy cost only some cents. Insert proxies in this format: ["http://{username}:{password}@{host}:{port}", "http://{username}:{password}@{host}:{port}"]\
+  **TIP:** If normally you setted the requestTiming field to 30000 with only 2 proxies you can set it to 10000 (10 seconds) because 1 ip used is from your pc/server and 2 from proxies
 
 ## TODO List
 
@@ -105,7 +108,9 @@ Open the config.json file and be careful to follow the rules below for proper op
 | ✅ | Create a very useful log management for the notification of important informations | **version 1.3.1** |
 | ✅ | Keywords to filter products | **version 1.4** |
 | ✅ | Possibility to customize discord messages | **version 1.4.1** |
-| 🚧 | Possibility to use proxies | **version 2** |
+| ✅ | Possibility to add more webhook url in the same script | **version 1.4.2** |
+| ✅ | Possibility to use proxies | **version 1.5** |
+| | possibility to monitor hundreds of more products simultaneously with only 1 script run | **version 1.5.1** |
 | | more ... | **version ...** |
 
 
