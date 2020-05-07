@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "discord-webhook-node": "^1.0.7",
+    "https-proxy-agent": "^5.0.0",
     "mongoose": "^5.9.10"
   }
 }

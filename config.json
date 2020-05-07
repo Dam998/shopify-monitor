@@ -1,6 +1,8 @@
 {
     "mongodb_uri": "mongodb://127.0.0.1:27017/shopify",
-    "webhook_url": "DISCORD_WEBHOOK_URL",
+    "webhook_url": [
+        "DISCORD_WEBHOOK_URL"
+    ],
     "discord_message_settings": {
         "botImage": "https://cdn.discordapp.com/embed/avatars/0.png",
         "botName": "Shopify monitor",
@@ -17,5 +19,6 @@
             "keywords": [["New Balance"],["Adidas","Yeezy" ]]
         },
         { "url": "sesinko.com" }
-    ]
+    ],
+    "proxiesList": [ ]
 }

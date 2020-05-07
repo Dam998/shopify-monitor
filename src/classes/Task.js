@@ -1,4 +1,5 @@
 const axios = require('axios');
+const httpsProxyAgent = require("https-proxy-agent");
 
 const Discord = require('./Discord')
 
@@ -13,23 +14,54 @@ class Task {
         this.sellerUrl = taskSettings.url;
         this.firstRun = true;
         this.sellerId = taskSettings._id;
-        this.banCount = 0.5;
 
         this.keywords = taskSettings.keywords
-        if(global.config.keywords){
+        if (global.config.keywords) {
             this.keywords = this.keywords.concat(global.config.keywords)
         }
+
+        this.proxiesList = [{ url: "", unbanTime: 0, banCount: 0.5 }]
+        this.proxyCount = 0
+        if (global.config.proxiesList && global.config.proxiesList.length > 0) {
+            this.proxiesList = this.proxiesList.concat(global.config.proxiesList.map(x => ({ url: x, unbanTime: 0, banCount: 0.5 })))
+        }
+        this.currentProxy = {}
     }
 
     start = async () => {
         this.task = setInterval(async () => {
 
             try {
-                const response = await axios.get(`https://${this.sellerUrl}/products.json`, {
-                    responseType: 'json',
-                })
+                var config = {}
 
-                this.banCount = 0.5;
+                do {
+                    this.currentProxy = this.proxiesList[this.proxyCount];
+
+                    if(this.currentProxy.unbanTime > 0 && this.currentProxy.unbanTime <= Date.now()){
+                        this.currentProxy.unbanTime = 0;
+                    }
+
+                    this.proxyCount++;
+                    if (this.proxyCount >= this.proxiesList.length) {
+                        this.proxyCount = 0;
+                    }
+
+                } while(this.currentProxy.unbanTime === -1 || this.currentProxy.unbanTime > 0)
+                                
+                if (this.currentProxy.url != "") {
+                    const agent = new httpsProxyAgent(this.currentProxy.url);
+
+                    config = {
+                        method: "GET",
+                        httpsAgent: agent
+                    };
+                }
+                
+                var url = `https://${this.sellerUrl}/products.json`
+
+                const response = await axios.get(url, config)
+
+                this.currentProxy.banCount = 0.5;
 
                 var products = response.data.products;
 
@@ -109,20 +141,29 @@ class Task {
             }
             catch (err) {
                 if (err.response && (err.response.status === 430 || err.response.status === 429)) {
-                    this.banCount += 0.5;
-                    Log.Warning(`Ban occurred [${this.sellerUrl}] - Retry after ${60 * this.banCount} seconds`)
-                    clearInterval(this.task);
-                    setTimeout(() => {
-                        this.start()
-                    }, 60000 * this.banCount)
+                    this.currentProxy.banCount += 0.5;
+                    Log.Warning(`Ban occurred [${this.sellerUrl}] - Retry after ${60 * this.currentProxy.banCount} seconds`)
+                    
+                    this.currentProxy.unbanTime = Date.now() + (60000 * this.currentProxy.banCount)
                 }
                 else if (err.response && err.response.status === 403) {
                     Log.Error(`${this.sellerUrl} has an high level of protection from monitors, please notify Dam998 by opening an issue on github [https://github.com/Dam998/shopify-monitor]`);
                     clearInterval(this.task)
                 }
+                else if (err.response && err.response.status === 502) {
+                    Log.Error(`Bad gateway error, if you are using ipv6 proxy don't use it, because it's not supported. If this is not the solution please open an issue on github [https://github.com/Dam998/shopify-monitor]`);
+                    this.currentProxy.unbanTime = -1
+                }
+                else if (err.response && err.response.status === 502) {
+                    Log.Warning(`Unknown Error from server, notify Dam998 by opening an issue on github [https://github.com/Dam998/shopify-monitor] if the problem persists`);
+                    this.currentProxy.unbanTime = -1
+                }
                 else if (err.code === 'ETIMEDOUT') {
                     Log.Error(`Timeout occurred, a node js script cannot manage a lot of requests in the same time (I raccomand max 10 sites for script's istance, to stay more safe), please start more that 1 monitor with splitted sites or contact Dam998 for help [https://github.com/Dam998/shopify-monitor]`);
                     clearInterval(this.task)
+                }
+                else if(err.code === 'ECONNRESET'){
+                    Log.Warning(`The connection was reset, notify Dam998 by opening an issue on github [https://github.com/Dam998/shopify-monitor] if the problem persists`);
                 }
                 else {
                     console.log(err)

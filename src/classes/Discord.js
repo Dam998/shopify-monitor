@@ -2,21 +2,30 @@ const { Webhook, MessageBuilder } = require('discord-webhook-node');
 
 const Log = require('./Log')
 
-if(global.config.webhook_url === ''){
+if(global.config.webhook_url === []){
     Log.Error('Discord webhook url cannot be empty, insert it in the config.json file')
     process.exit()
 }
 
-const hook = new Webhook(global.config.webhook_url);
-
+const hooks = []
 const botSettings = global.config.discord_message_settings;
-if(botSettings.botName && botSettings.botName != ""){
-    hook.setUsername(botSettings.botName)
-}
 
-if(botSettings.botImage && botSettings.botImage != ""){
-    hook.setAvatar(botSettings.botImage)
-}
+var setBotName = botSettings.botName && botSettings.botName != "";
+var setBotImage = botSettings.botImage && botSettings.botImage != "";
+
+global.config.webhook_url.forEach(x => {
+    var hook = new Webhook(x);
+
+    if(setBotName){
+        hook.setUsername(botSettings.botName)
+    }
+
+    if(setBotImage){
+        hook.setAvatar(botSettings.botImage)
+    }
+
+    hooks.push(hook)
+})
 
 let Discord = {};
 
@@ -61,11 +70,15 @@ Discord.notifyProduct = async ({title, sellerUrl, image, url, variants, status})
         embed.setTimestamp()
     }
 
-    hook.send(embed);
+    hooks.forEach(hook => {
+        hook.send(embed);
+    })
 }
 
 Discord.info = async (title) => {
-    hook.info(title);
+    hooks.forEach(hook => {
+        hook.info(title);
+    })  
 }
 
 module.exports = Discord;
