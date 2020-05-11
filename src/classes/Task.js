@@ -57,7 +57,7 @@ class Task {
                     };
                 }
                 
-                var url = `https://${this.sellerUrl}/products.json`
+                var url = `https://${this.sellerUrl}/products.json?limit=250`
 
                 const response = await axios.get(url, config)
 
