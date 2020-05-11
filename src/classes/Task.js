@@ -177,13 +177,15 @@ class Task {
         return products.filter(product => {
             var title = product.title.toLowerCase();
             var vendor = product.vendor.toLowerCase();
+            var url = product.handle.toLowerCase();
             for (var keys of this.keywords) {
                 var check = true;
                 for (var key of keys) {
                     var keyToLower = key.toLowerCase();
                     if (title.indexOf(keyToLower) === -1
                         && vendor.indexOf(keyToLower) === -1
-                        && !product.tags.some(tag => tag.toLowerCase().indexOf(keyToLower) > -1)) {
+                        && !product.tags.some(tag => tag.toLowerCase().indexOf(keyToLower) > -1)
+                        && url.indexOf(keyToLower) === -1) {
                         check = false;
                         break;
                     }
