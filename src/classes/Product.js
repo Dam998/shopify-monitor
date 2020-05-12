@@ -37,7 +37,6 @@ class Product {
                                 || this.sellerUrl != product.sellerUrl
                                 || this.handle != product.handle
                                 || this.url != product.url
-                                || this.image != product.image
                                 || this.title != product.title
                                 || this.variants.length != product.variants.length;
         if(needToNotifyUpdate){
