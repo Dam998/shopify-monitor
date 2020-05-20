@@ -110,7 +110,7 @@ Open the config.json file and be careful to follow the rules below for proper op
 | ✅ | Possibility to customize discord messages | **version 1.4.1** |
 | ✅ | Possibility to add more webhook url in the same script | **version 1.4.2** |
 | ✅ | Possibility to use proxies | **version 1.5** |
-| | possibility to monitor hundreds of more products simultaneously with only 1 script run | **version 1.5.1** |
+| ✅ | possibility to monitor hundreds of more products simultaneously with only 1 script run | **version 1.5.1** |
 | | more ... | **version ...** |
 
 
