@@ -1,6 +1,6 @@
 # Shopify monitor
 
-<a href="https://www.buymeacoffee.com/Dam998" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> If you like my project and if you want to support me to do other projects like this, please, add a star to my repository and [BuyMeACoffe](https://www.buymeacoffee.com/Dam998)!
+Follow my new project https://twitter.com/BlackRabbitIO
 
 ## Information
 This is a very simple and powerful shopify monitor script\
