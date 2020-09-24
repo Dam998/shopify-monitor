@@ -1,7 +1,5 @@
 # Shopify monitor
 
-Follow my new project https://twitter.com/BlackRabbitIO
-
 ## Information
 This is a very simple and powerful shopify monitor script\
 Because is always uptodate, extremely lightweight and efficient, this shopify monitor is better than a lot of paid monitor, COVID-19 brings also good things
