@@ -10,7 +10,7 @@
   "author": "Dam998",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "discord-webhook-node": "^1.0.7",
     "https-proxy-agent": "^5.0.0",
     "mongoose": "^5.9.10"
